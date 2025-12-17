@@ -1,0 +1,13 @@
+
+{% extends 'core/base.html' %}
+
+{% block titulo_bar %} Proyectos {% endblock %}
+
+    {% block content %}
+
+    {% for proyecto in proyectos %}
+    <h1><a href="{% url 'detalle_proyecto' proyecto.pk %}">{{proyecto}}</a></h1>
+    {% endfor %}
+
+    {% endblock %}
+

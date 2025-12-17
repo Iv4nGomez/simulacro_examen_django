@@ -1,0 +1,2 @@
+DJango == 5.2.8
+Pillow

@@ -1,0 +1,19 @@
+
+{% extends 'core/base.html' %}
+
+{% block titulo_bar %} Detalle proyecto {{proyecto}} {% endblock %}
+
+    {% block content %}
+
+    <h1>{{proyecto}}</h1>
+    <p>Descripcion: {{proyecto.descripcion}}</p>
+    <p>Tipo de servicio: {{proyecto.get_tipo_servicio_display}}</p>
+    <p>Imagen del proyecto: <img src="{{proyecto.imagen_destacada.url}}" alt="Imagen del proyecto"></p>
+
+    <h2>Testimonios</h2>
+
+    {% for testimonio in proyecto.testimonio_set.all %}
+        {{testimonio}}
+    {% endfor %}
+    {% endblock %}
+
