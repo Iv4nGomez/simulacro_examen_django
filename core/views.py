@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView
 from .models import Proyecto
-from .forms import ProyectoForm
+from .forms import ProyectoForm, TestimonioForm
 from django.urls import reverse_lazy
 
 class verProyectos(ListView):
@@ -19,3 +19,12 @@ def detalle_proyecto(request, pk):
     proyecto = get_object_or_404(Proyecto, pk=pk)
     return render(request, 'core/detalle_proyecto.html', {'proyecto':proyecto})
 
+def crear_testimonio(request):
+    if request.method == 'POST':
+        form = TestimonioForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = TestimonioForm()
+
+    return render(request, 'core/crear_testimonio.html', {'form':form})
